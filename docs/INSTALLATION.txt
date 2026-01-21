@@ -1,0 +1,139 @@
+========================================
+   RESTAURANT THEME - INSTALLATION
+========================================
+
+Thank you for purchasing Restaurant Theme!
+
+This file provides quick installation instructions.
+For complete documentation, see docs/documentation.md
+
+========================================
+   REQUIREMENTS
+========================================
+
+- Node.js (version 18 or higher)
+- npm or yarn package manager
+- Modern web browser
+
+========================================
+   INSTALLATION STEPS
+========================================
+
+1. EXTRACT FILES
+   Extract the downloaded ZIP file to your desired location.
+
+2. OPEN TERMINAL
+   Navigate to the project folder:
+   
+   cd restaurant-theme
+
+3. INSTALL DEPENDENCIES
+   Run one of the following commands:
+   
+   npm install
+   
+   OR
+   
+   yarn install
+
+4. START DEVELOPMENT SERVER
+   Run:
+   
+   npm run dev
+   
+   OR
+   
+   yarn dev
+
+5. OPEN IN BROWSER
+   Visit: http://localhost:5173
+   
+   The website should now be running!
+
+========================================
+   BUILD FOR PRODUCTION
+========================================
+
+When ready to deploy:
+
+npm run build
+
+OR
+
+yarn build
+
+This creates an optimized build in the 'dist' folder.
+
+========================================
+   DEPLOYMENT
+========================================
+
+NETLIFY/VERCEL (Recommended):
+- Connect your Git repository
+- Or drag and drop the 'dist' folder
+
+TRADITIONAL HOSTING:
+- Upload contents of 'dist' folder to your server
+- Configure server to serve index.html for all routes
+
+========================================
+   CUSTOMIZATION
+========================================
+
+- Update menu: src/data/menuData.js
+- Update blog: src/data/blogData.js
+- Change colors: tailwind.config.js
+- Replace images: Update URLs in data files
+- Modify pages: src/pages/
+
+See docs/documentation.md for detailed customization guide.
+
+========================================
+   TROUBLESHOOTING
+========================================
+
+ISSUE: npm install fails
+SOLUTION: Update Node.js to version 18 or higher
+
+ISSUE: Port already in use
+SOLUTION: npm run dev -- --port 3000
+
+ISSUE: Build errors
+SOLUTION: Delete node_modules and package-lock.json, then reinstall
+
+========================================
+   SUPPORT
+========================================
+
+Email: udaythanki2@gmail.com
+Response Time: 24-48 hours (Monday-Friday)
+
+Please include:
+- Your theme version
+- Node.js version
+- Detailed description of issue
+- Screenshots if applicable
+
+========================================
+   DOCUMENTATION
+========================================
+
+Complete documentation available in:
+- docs/README.md - Quick start
+- docs/documentation.md - Full guide
+- docs/credits.md - Asset credits
+- docs/changelog.md - Version history
+
+========================================
+   THANK YOU!
+========================================
+
+Thank you for choosing Restaurant Theme.
+
+If you're happy with the product, please consider
+leaving a rating on ThemeForest!
+
+Your feedback helps us improve.
+
+Built with ❤️ for ThemeForest
+========================================

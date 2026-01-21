@@ -1,0 +1,196 @@
+# ThemeForest Restaurant Theme - Development Rules
+
+You are building a premium ThemeForest-ready Restaurant Website Template.
+
+## CRITICAL RULES - THEMEFOREST COMPLIANCE
+
+### 1. ORIGINALITY (MANDATORY)
+- Template MUST be original and not copied from other ThemeForest themes
+- Do NOT replicate existing theme layouts 1:1
+- Create unique section combinations and arrangements
+- Use custom design patterns and component structures
+- Reviewers WILL check for originality - failure results in rejection
+
+### 2. LEGAL ASSETS ONLY (MANDATORY)
+- **Images**: Use Unsplash/Pexels ONLY with proper attribution
+  - Never embed copyrighted restaurant photos
+  - Never use real restaurant branding/logos
+  - Document all image sources in credits.md
+- **Icons**: Lucide React (MIT licensed) ONLY
+- **Fonts**: Google Fonts ONLY (Open Font License)
+- **No paid assets**: Unless you have redistribution rights
+- **Credits**: Maintain a comprehensive credits.md file
+
+### 3. CODE QUALITY (MANDATORY)
+- Clean, consistent naming conventions:
+  - camelCase for variables and functions
+  - PascalCase for React components
+- NO unused imports or variables
+- NO console.log statements in production code
+- NO commented-out code blocks
+- Proper comments for complex logic only
+- Clean file structure and organization
+- All imports organized and necessary
+
+### 4. TECHNICAL REQUIREMENTS
+
+#### React Best Practices
+- Use functional components with hooks
+- Implement proper prop validation
+- Use React.memo for performance where appropriate
+- Implement error boundaries for production
+- Follow React 18+ best practices
+
+#### Tailwind CSS
+- Use Tailwind utility classes consistently
+- Implement design system through tailwind.config.js
+- Use dark mode class strategy
+- No inline styles unless absolutely necessary
+- Responsive design: mobile-first approach
+- Use @apply sparingly, prefer utility classes
+
+#### Performance
+- Lazy load images with loading="lazy"
+- Code splitting with React.lazy for routes
+- Optimize bundle size (target < 500KB initial)
+- Remove unused Tailwind classes (purge enabled)
+- Lighthouse score target: 90+ across all metrics
+
+#### Accessibility
+- Semantic HTML elements
+- ARIA labels where needed
+- Keyboard navigation support
+- Focus states on interactive elements
+- Alt text for all images
+- Proper heading hierarchy
+
+### 5. RESPONSIVE DESIGN
+- Mobile-first approach mandatory
+- Test at breakpoints: 320px, 640px, 768px, 1024px, 1280px, 1536px
+- Touch-friendly interactions on mobile
+- Proper text sizing and spacing
+- No horizontal scroll on any device
+
+### 6. DARK MODE
+- Implement class-based dark mode
+- All components must support dark variants
+- Smooth transitions between themes
+- Store preference in localStorage
+- Test all pages in both modes
+
+### 7. BROWSER COMPATIBILITY
+- Support modern browsers (Chrome, Firefox, Safari, Edge)
+- No IE11 support required
+- Use modern JavaScript (ES6+)
+- CSS Grid and Flexbox are fine to use
+
+### 8. SEO OPTIMIZATION
+- Unique meta titles and descriptions per page
+- Open Graph tags for social sharing
+- Structured data (JSON-LD) for restaurant
+- Semantic HTML throughout
+- Proper heading hierarchy (h1, h2, h3...)
+
+### 9. DOCUMENTATION REQUIREMENTS
+- Comprehensive installation guide
+- Customization instructions (colors, fonts, images)
+- Folder structure explanation
+- How to add/remove pages
+- Credits for all assets
+- Browser support list
+- Troubleshooting section
+
+### 10. THEMEFOREST SUBMISSION CHECKLIST
+- [ ] All pages functional and responsive
+- [ ] Dark mode working everywhere
+- [ ] Forms with proper validation
+- [ ] No console errors
+- [ ] No dead links
+- [ ] Professional placeholder content
+- [ ] Complete documentation
+- [ ] Credits file with all sources
+- [ ] Screenshots prepared (preview, pages, mobile, dark mode)
+- [ ] Demo deployed and accessible
+- [ ] Package structure correct
+
+## DESIGN SYSTEM
+
+### Colors (Modern Elegant Theme)
+- Primary: Deep gold/amber (#D4AF37, amber-600)
+- Secondary: Charcoal/slate (#334155, slate-700)
+- Accent: Cream/beige (#F5F5DC, stone-200)
+- Success: Emerald green
+- Warning: Amber
+- Error: Red
+- Neutral: Gray scale
+
+### Typography
+- Headings: Playfair Display (Google Fonts)
+- Body: Inter (Google Fonts)
+- Sizes: Use Tailwind scale (text-sm, text-base, text-lg, etc.)
+
+### Spacing
+- Consistent padding/margin using Tailwind scale
+- Section spacing: py-16 (mobile) to py-24 (desktop)
+- Container: max-w-7xl with px-4 sm:px-6 lg:px-8
+
+### Components Style
+- Rounded corners: rounded-md (4px), rounded-lg (8px), rounded-xl (16px)
+- Shadows: Elegant elevation (shadow-sm, shadow-md, shadow-lg)
+- Transitions: duration-300, ease-in-out
+- Hover states: subtle scale or color changes
+
+## FOLDER STRUCTURE
+
+src/
+  assets/
+    images/       # Placeholder images (Unsplash/Pexels)
+    fonts/        # Google Fonts if needed
+  components/
+    ui/           # Button, Input, Card, Badge, Modal, etc.
+    layout/       # Navbar, Footer, Layout
+    sections/     # Hero, FeaturedDishes, Testimonials, etc.
+  pages/          # All route pages
+  routes/         # Router configuration
+  data/           # Mock data (menu, testimonials, blog)
+  hooks/          # Custom hooks (useTheme, useScrollSpy)
+  contexts/       # Context providers (ThemeContext)
+  styles/         # Global styles
+  utils/          # Helper functions
+docs/             # Documentation
+public/           # Static assets
+
+## DEVELOPMENT WORKFLOW
+
+1. Build reusable UI components first
+2. Create sections using UI components
+3. Compose pages from sections
+4. Implement features (dark mode, animations, forms)
+5. Add SEO meta tags
+6. Test responsiveness
+7. Audit code quality
+8. Create documentation
+9. Package for ThemeForest
+
+## TESTING CHECKLIST
+
+Before considering complete:
+- [ ] Test all navigation links
+- [ ] Test forms (validation, error states)
+- [ ] Test dark mode toggle
+- [ ] Test on multiple screen sizes
+- [ ] Test keyboard navigation
+- [ ] Check console for errors
+- [ ] Run Lighthouse audit
+- [ ] Verify all images load
+- [ ] Check for broken links
+- [ ] Test in Chrome, Firefox, Safari
+
+## REMEMBER
+
+- Quality over speed
+- Original designs only
+- Legal assets with credits
+- Clean, production-ready code
+- Comprehensive documentation
+- ThemeForest reviewers are strict - follow all rules

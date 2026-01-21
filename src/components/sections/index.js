@@ -1,0 +1,10 @@
+export { default as Hero } from './Hero';
+export { default as FeaturedDishes } from './FeaturedDishes';
+export { default as MenuPreview } from './MenuPreview';
+export { default as ChefStory } from './ChefStory';
+export { default as ReservationCTA } from './ReservationCTA';
+export { default as Testimonials } from './Testimonials';
+export { default as GalleryPreview } from './GalleryPreview';
+export { default as Stats } from './Stats';
+export { default as Newsletter } from './Newsletter';
+export { default as FAQ } from './FAQ';
