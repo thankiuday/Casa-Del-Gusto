@@ -46,8 +46,11 @@ Fill in these settings:
 | **Build Command** | `npm install && npm run build` |
 | **Publish Directory** | `dist` |
 
-### 5️⃣ Add Routing Rule (IMPORTANT!)
+### 5️⃣ Routing Configuration (IMPORTANT!)
 
+**✅ Already Configured!** The `render.yaml` file includes the correct rewrite rules.
+
+**If you need to configure manually:**
 1. Scroll down to **"Advanced"** section
 2. Click **"Add Redirect"**
 3. Configure:
@@ -55,7 +58,7 @@ Fill in these settings:
    - **Destination:** `/index.html`
    - **Type:** `Rewrite`
 
-**OR** use the `render.yaml` file (already included in your project)
+**Note:** The rewrite rule ensures that refreshing pages like `/menu` or `/about` works correctly instead of showing 404 errors.
 
 ### 6️⃣ Deploy
 

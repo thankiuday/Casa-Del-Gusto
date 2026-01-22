@@ -15,6 +15,8 @@ services:
         name: Cache-Control
         value: public, max-age=3600
     routes:
+      # SPA Routing: All routes should serve index.html for React Router
+      # This fixes the 404 error when refreshing pages like /menu, /about, etc.
       - type: rewrite
         source: /*
         destination: /index.html

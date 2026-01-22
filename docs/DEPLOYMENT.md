@@ -102,6 +102,12 @@ If you have `render.yaml` in your repository:
 
 Since this is a React Router SPA, you need to handle client-side routing:
 
+**Option A: Using render.yaml (Recommended - Already Configured)**
+- The `render.yaml` file in your repository already includes the correct rewrite rules
+- Render will automatically detect and apply these rules when deploying
+- No manual configuration needed!
+
+**Option B: Manual Configuration (If render.yaml doesn't work)**
 1. **In Render Dashboard:**
    - Go to your Static Site settings
    - Navigate to "Redirects & Rewrites"
@@ -109,8 +115,11 @@ Since this is a React Router SPA, you need to handle client-side routing:
      - **Source:** `/*`
      - **Destination:** `/index.html`
      - **Type:** `Rewrite`
+   - **Important:** Exclude static assets:
+     - Add exception for `/assets/*` → `/assets/$1`
+     - Add exception for `/images/*` → `/images/$1`
 
-   OR use the `render.yaml` file (already configured)
+**Note:** The `public/_redirects` file is also included for Netlify compatibility.
 
 ### Step 6: Wait for Deployment
 

@@ -1,0 +1,5 @@
+# Netlify and other hosting platforms redirect rules
+# This ensures React Router works correctly on refresh
+
+# Redirect all routes to index.html except static files
+/*    /index.html   200
