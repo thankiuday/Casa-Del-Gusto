@@ -97,6 +97,13 @@ const Navbar = () => {
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            <Link to="/reservations" className="flex-shrink-0">
+              <Button size="sm" className="text-xs xl:text-sm">
+                <Phone size={14} className="xl:w-4 xl:h-4 mr-1.5 xl:mr-2" />
+                <span className="hidden xl:inline">Book a Table</span>
+                <span className="xl:hidden">Book</span>
+              </Button>
+            </Link>
             <a 
               href="https://themeforest.net/item/your-item-name/12345678" 
               target="_blank" 
@@ -108,13 +115,6 @@ const Navbar = () => {
                 <span className="xl:hidden">Buy</span>
               </Button>
             </a>
-            <Link to="/reservations" className="flex-shrink-0">
-              <Button size="sm" className="text-xs xl:text-sm">
-                <Phone size={14} className="xl:w-4 xl:h-4 mr-1.5 xl:mr-2" />
-                <span className="hidden xl:inline">Book a Table</span>
-                <span className="xl:hidden">Book</span>
-              </Button>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}

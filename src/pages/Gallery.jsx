@@ -37,35 +37,46 @@ const Gallery = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
-        <motion.div 
-          className="absolute inset-0 z-0 w-full" 
-          style={{ maxWidth: '100vw', overflowX: 'hidden' }}
-          animate={{
-            scale: [1, 1.07, 1],
-          }}
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <motion.img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop"
-            alt="Gallery"
-            className="w-full h-full object-cover"
-            style={{ maxWidth: '100%', width: '100%' }}
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', width: '100vw', left: 0, right: 0, margin: 0, padding: 0 }}>
+        <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0 }}>
+          <motion.div 
+            className="absolute inset-0" 
+            style={{ 
+              maxWidth: '100vw', 
+              overflowX: 'hidden',
+              width: '100%',
+              height: '100%',
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0
+            }}
             animate={{
-              filter: ['brightness(0.4)', 'brightness(0.5)', 'brightness(0.4)'],
+              scale: [1, 1.01, 1],
             }}
             transition={{
-              duration: 8,
+              duration: 14,
               repeat: Infinity,
               ease: "easeInOut"
             }}
-          />
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/60 to-black/70"
+          >
+            <motion.img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop"
+              alt="Gallery"
+              className="w-full h-full object-cover"
+              style={{ maxWidth: '100%', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+              animate={{
+                filter: ['brightness(0.4)', 'brightness(0.5)', 'brightness(0.4)'],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/60 to-black/70"
+              style={{ width: '100%', height: '100%', maxWidth: '100vw', left: 0, right: 0, top: 0, bottom: 0 }}
             animate={{
               background: [
                 'linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
@@ -79,8 +90,9 @@ const Gallery = () => {
               ease: "easeInOut"
             }}
           />
-        </motion.div>
-        <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw' }}>
+          </motion.div>
+        </div>
+        <div className="relative z-10 text-center text-white w-full mx-auto" style={{ maxWidth: 'min(100vw, 1280px)', width: '100%', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)', boxSizing: 'border-box', overflowX: 'hidden' }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
@@ -114,7 +126,7 @@ const Gallery = () => {
               </motion.span>
             </motion.h1>
           </motion.div>
-        </Container>
+        </div>
       </section>
 
       {/* Gallery Section */}
