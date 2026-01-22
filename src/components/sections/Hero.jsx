@@ -38,7 +38,7 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
 
   if (variant === 'fullscreen') {
     return (
-      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', position: 'relative', width: '100%', left: 0, right: 0 }}>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', position: 'relative', width: '100vw', left: 0, right: 0, margin: 0, padding: 0 }}>
         {/* Animated Background Image with Parallax */}
         <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0 }}>
           <motion.div 
@@ -83,6 +83,7 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
           {/* Animated Gradient Overlay */}
           <motion.div 
             className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
+            style={{ width: '100%', height: '100%', maxWidth: '100vw', left: 0, right: 0, top: 0, bottom: 0 }}
             animate={{
               background: [
                 'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
@@ -124,13 +125,13 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
         </div>
 
         {/* Content with Staggered Animations */}
-        <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw', width: '100%', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)', boxSizing: 'border-box' }}>
+        <div className="relative z-10 text-center text-white w-full mx-auto" style={{ maxWidth: 'min(100vw, 1280px)', width: '100%', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)', boxSizing: 'border-box', overflowX: 'hidden' }}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             className="w-full"
-            style={{ maxWidth: '100%', overflowX: 'hidden', width: '100%', boxSizing: 'border-box' }}
+            style={{ maxWidth: '100%', overflowX: 'hidden', width: '100%', boxSizing: 'border-box', margin: '0 auto' }}
           >
             {/* Subtitle with Slide and Fade */}
             <motion.p 
@@ -187,27 +188,30 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
             
             {/* Buttons with Stagger */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              style={{ maxWidth: '100%', overflowX: 'hidden', width: '100%' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
               <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                style={{ maxWidth: '100%', overflowX: 'hidden' }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <Link to={props.cta1.link}>
-                  <Button size="lg" className="relative overflow-hidden group">
+                <Link to={props.cta1.link} style={{ display: 'inline-block', maxWidth: '100%' }}>
+                  <Button size="lg" className="relative overflow-hidden group" style={{ maxWidth: '100%' }}>
                     <motion.span
                       className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
                       initial={{ x: '-100%' }}
                       whileHover={{ x: '100%' }}
                       transition={{ duration: 0.5 }}
+                      style={{ maxWidth: '100%' }}
                     />
                     <span className="relative z-10 flex items-center">
                       {props.cta1.text}
                       <motion.span
-                        animate={{ x: [0, 5, 0] }}
+                        animate={{ x: [0, 3, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                       >
                         <ArrowRight className="ml-2" size={20} />
@@ -217,11 +221,12 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
                 </Link>
               </motion.div>
               <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                style={{ maxWidth: '100%', overflowX: 'hidden' }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <Link to={props.cta2.link}>
-                  <Button variant="outline" size="lg" className="border-2 border-white/30 hover:border-primary-400">
+                <Link to={props.cta2.link} style={{ display: 'inline-block', maxWidth: '100%' }}>
+                  <Button variant="outline" size="lg" className="border-2 border-white/30 hover:border-primary-400" style={{ maxWidth: '100%' }}>
                     <Phone className="mr-2" size={20} />
                     {props.cta2.text}
                   </Button>
@@ -229,7 +234,7 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
               </motion.div>
             </motion.div>
           </motion.div>
-        </Container>
+        </div>
       </section>
     );
   }
