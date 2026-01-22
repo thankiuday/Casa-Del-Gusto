@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Award, Heart, Leaf, Users } from 'lucide-react';
 import { Container, SectionTitle, Card, SEO } from '../components/ui';
 import { teamData } from '../data/teamData';
-import { Stats } from '../components/sections';
+import { Stats, Hero } from '../components/sections';
 
 const About = () => {
   const values = [
@@ -36,98 +36,15 @@ const About = () => {
         description="Learn about our story, our passion for culinary excellence, and meet our talented team of chefs and staff."
         keywords="about us, restaurant story, chef, culinary team, fine dining experience"
       />
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', width: '100vw', left: 0, right: 0, margin: 0, padding: 0 }}>
-        <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0 }}>
-          <motion.div 
-            className="absolute inset-0" 
-            style={{ 
-              maxWidth: '100vw', 
-              overflowX: 'hidden',
-              width: '100%',
-              height: '100%',
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0
-            }}
-            animate={{
-              scale: [1, 1.01, 1],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <motion.img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop"
-              alt="About Us"
-              className="w-full h-full object-cover"
-              style={{ maxWidth: '100%', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-              animate={{
-                filter: ['brightness(0.4)', 'brightness(0.5)', 'brightness(0.4)'],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
-              style={{ width: '100%', height: '100%', maxWidth: '100vw', left: 0, right: 0, top: 0, bottom: 0 }}
-            animate={{
-              background: [
-                'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
-                'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7), rgba(0,0,0,0.6))',
-                'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
-              ],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          </motion.div>
-        </div>
-        <div className="relative z-10 text-center text-white w-full mx-auto" style={{ maxWidth: 'min(100vw, 1280px)', width: '100%', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)', boxSizing: 'border-box', overflowX: 'hidden' }}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full"
-            style={{ maxWidth: '100%', overflowX: 'hidden', paddingLeft: '0.5rem', paddingRight: '0.5rem' }}
-          >
-            <motion.p 
-              className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words" 
-              style={{ wordBreak: 'break-word' }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              About Us
-            </motion.p>
-            <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words" 
-              style={{ wordBreak: 'break-word', maxWidth: '100%' }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="inline-block"
-              >
-                Our Story
-              </motion.span>
-            </motion.h1>
-          </motion.div>
-        </div>
-      </section>
+      <Hero 
+        variant="glassmorphism"
+        subtitle="About Us"
+        title="Our Story"
+        description="Discover the passion and dedication behind CASA DEL GUSTO"
+        image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop"
+        cta1={{ text: 'View Menu', link: '/menu' }}
+        cta2={{ text: 'Book a Table', link: '/reservations' }}
+      />
 
       {/* Story Section */}
       <section className="section-padding bg-white dark:bg-gray-900">

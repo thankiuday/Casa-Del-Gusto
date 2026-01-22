@@ -4,6 +4,7 @@ import { Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Container, SectionTitle, Card, Badge, Button, SEO } from '../components/ui';
 import { menuData, categories } from '../data/menuData';
+import { Hero } from '../components/sections';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('all');

@@ -19,7 +19,7 @@ const Home1 = () => {
         description="Experience culinary excellence with our carefully crafted dishes made from the finest ingredients. Book your table today."
         keywords="restaurant, fine dining, food, gourmet, reservations, best restaurant, Casa Del Gusto"
       />
-      <Hero variant="fullscreen" />
+      <Hero variant="cinematic" />
       <FeaturedDishes />
       <ChefStory />
       <MenuPreview />
