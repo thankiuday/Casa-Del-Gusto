@@ -25,9 +25,9 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
 
   if (variant === 'fullscreen') {
     return (
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full max-w-full">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 w-full">
           <img
             src={props.image}
             alt="Restaurant"
@@ -37,19 +37,20 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
         </div>
 
         {/* Content */}
-        <Container className="relative z-10 text-center text-white">
+        <Container className="relative z-10 text-center text-white w-full max-w-full px-3 sm:px-4 md:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="w-full max-w-full"
           >
-            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4">
+            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words">
               {props.subtitle}
             </p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-6 break-words px-2">
               {props.title}
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8 px-4 break-words">
               {props.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

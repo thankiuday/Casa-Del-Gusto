@@ -7,7 +7,18 @@ const Container = ({ children, className = '', noPadding = false }) => {
     ${className}
   `.trim().replace(/\s+/g, ' ');
 
-  return <div className={classes} style={{ maxWidth: '100%', overflowX: 'hidden' }}>{children}</div>;
+  return (
+    <div 
+      className={classes} 
+      style={{ 
+        maxWidth: '100%', 
+        overflowX: 'hidden',
+        width: '100%'
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Container;

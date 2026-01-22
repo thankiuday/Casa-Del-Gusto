@@ -24,8 +24,8 @@ const Menu = () => {
         keywords="restaurant menu, food menu, dishes, breakfast, lunch, dinner, desserts"
       />
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full max-w-full">
+        <div className="absolute inset-0 z-0 w-full">
           <img
             src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&h=1080&fit=crop"
             alt="Menu"
@@ -33,16 +33,17 @@ const Menu = () => {
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
-        <Container className="relative z-10 text-center text-white">
+        <Container className="relative z-10 text-center text-white w-full max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="w-full max-w-full px-2"
           >
-            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4">
+            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words">
               Our Menu
             </p>
-            <h1 className="text-4xl md:text-6xl font-display font-bold">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words">
               Discover Our Dishes
             </h1>
           </motion.div>

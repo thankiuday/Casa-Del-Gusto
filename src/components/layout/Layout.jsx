@@ -9,9 +9,9 @@ const Layout = ({ children }) => {
   const { showScroll, scrollToTop } = useScrollToTop(500);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden max-w-full">
       <Navbar />
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-20 overflow-x-hidden max-w-full">
         {children}
       </main>
       <Footer />

@@ -37,8 +37,8 @@ const About = () => {
         keywords="about us, restaurant story, chef, culinary team, fine dining experience"
       />
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden w-full max-w-full">
+        <div className="absolute inset-0 z-0 w-full">
           <img
             src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop"
             alt="About Us"
@@ -46,11 +46,12 @@ const About = () => {
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
-        <Container className="relative z-10 text-center text-white">
+        <Container className="relative z-10 text-center text-white w-full max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="w-full max-w-full px-2"
           >
             <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4">
               About Us

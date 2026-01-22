@@ -45,8 +45,8 @@ const Contact = () => {
         keywords="contact restaurant, restaurant location, restaurant hours, contact us"
       />
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full max-w-full">
+        <div className="absolute inset-0 z-0 w-full">
           <img
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop"
             alt="Contact"
@@ -54,16 +54,17 @@ const Contact = () => {
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
-        <Container className="relative z-10 text-center text-white">
+        <Container className="relative z-10 text-center text-white w-full max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="w-full max-w-full px-2"
           >
-            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4">
+            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words">
               Get in Touch
             </p>
-            <h1 className="text-4xl md:text-6xl font-display font-bold">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words">
               Contact Us
             </h1>
           </motion.div>
