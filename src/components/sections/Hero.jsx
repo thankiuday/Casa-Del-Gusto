@@ -28,8 +28,8 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
+        x: Math.max(-10, Math.min(10, (e.clientX / window.innerWidth - 0.5) * 20)),
+        y: Math.max(-10, Math.min(10, (e.clientY / window.innerHeight - 0.5) * 20)),
       });
     };
     window.addEventListener('mousemove', handleMouseMove);
@@ -38,31 +38,48 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
 
   if (variant === 'fullscreen') {
     return (
-      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', position: 'relative', width: '100%', left: 0, right: 0 }}>
         {/* Animated Background Image with Parallax */}
-        <motion.div 
-          className="absolute inset-0 z-0 w-full" 
-          style={{ maxWidth: '100vw', overflowX: 'hidden' }}
-          animate={{
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <motion.img
-            src={props.image}
-            alt="Restaurant"
-            className="w-full h-full object-cover"
-            style={{ maxWidth: '100%', width: '100%' }}
-            animate={{
-              x: mousePosition.x,
-              y: mousePosition.y,
+        <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0 }}>
+          <motion.div 
+            className="absolute inset-0" 
+            style={{ 
+              maxWidth: '100vw', 
+              overflowX: 'hidden',
+              width: '100%',
+              height: '100%',
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0
             }}
-            transition={{ type: "spring", stiffness: 50, damping: 20 }}
-          />
+            animate={{
+              scale: [1, 1.01, 1],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <motion.img
+              src={props.image}
+              alt="Restaurant"
+              className="w-full h-full object-cover"
+              style={{ 
+                maxWidth: '100%', 
+                width: '100%',
+                maxHeight: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center'
+              }}
+              animate={{
+                x: Math.max(-5, Math.min(5, mousePosition.x)),
+                y: Math.max(-5, Math.min(5, mousePosition.y)),
+              }}
+              transition={{ type: "spring", stiffness: 50, damping: 20 }}
+            />
           {/* Animated Gradient Overlay */}
           <motion.div 
             className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
@@ -85,14 +102,15 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
               key={i}
               className="absolute w-2 h-2 bg-primary-400 rounded-full opacity-30"
               style={{
-                left: `${20 + i * 15}%`,
+                left: `${Math.min(85, 15 + i * 12)}%`,
                 top: `${30 + i * 10}%`,
+                maxWidth: '100vw',
               }}
               animate={{
-                y: [0, -30, 0],
-                x: [0, Math.sin(i) * 20, 0],
+                y: [0, -15, 0],
+                x: [0, Math.sin(i) * 8, 0],
                 opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.5, 1],
+                scale: [1, 1.2, 1],
               }}
               transition={{
                 duration: 3 + i * 0.5,
@@ -105,13 +123,13 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
         </motion.div>
 
         {/* Content with Staggered Animations */}
-        <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)' }}>
+        <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw', width: '100%', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)', boxSizing: 'border-box' }}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             className="w-full"
-            style={{ maxWidth: '100%', overflowX: 'hidden' }}
+            style={{ maxWidth: '100%', overflowX: 'hidden', width: '100%', boxSizing: 'border-box' }}
           >
             {/* Subtitle with Slide and Fade */}
             <motion.p 
@@ -127,7 +145,7 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
             {/* Title with Character Animation */}
             <motion.h1 
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-6 break-words" 
-              style={{ wordBreak: 'break-word', maxWidth: '100%' }}
+              style={{ wordBreak: 'break-word', maxWidth: '100%', width: '100%', overflowX: 'hidden', paddingLeft: '0.5rem', paddingRight: '0.5rem', boxSizing: 'border-box' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
@@ -137,15 +155,17 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="inline-block"
+                style={{ maxWidth: '100%', overflowX: 'hidden', width: '100%' }}
               >
                 {props.title.split(' ').map((word, i) => (
                   <motion.span
                     key={i}
                     className="inline-block mr-2"
+                    style={{ maxWidth: '100%' }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
-                    whileHover={{ scale: 1.05, color: '#d4af37' }}
+                    whileHover={{ scale: 1.02, color: '#d4af37' }}
                   >
                     {word}
                   </motion.span>
