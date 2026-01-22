@@ -8,6 +8,7 @@ const Modal = ({
   title,
   children,
   size = 'md',
+  showCloseButton = true,
 }) => {
   useEffect(() => {
     if (isOpen) {
@@ -49,18 +50,26 @@ const Modal = ({
                 rounded-2xl shadow-2xl overflow-hidden
                 my-8
               `}
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {title}
-                </h3>
-                <button
-                  onClick={onClose}
-                  className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
-                >
-                  <X size={24} />
-                </button>
-              </div>
+              {(title || showCloseButton) && (
+                <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                  {title && (
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {title}
+                    </h3>
+                  )}
+                  {showCloseButton && (
+                    <button
+                      onClick={onClose}
+                      className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors ml-auto"
+                      aria-label="Close modal"
+                    >
+                      <X size={24} />
+                    </button>
+                  )}
+                </div>
+              )}
               <div className="p-6">
                 {children}
               </div>
