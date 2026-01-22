@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Dark background -->
+  <rect width="64" height="64" fill="#1e293b" rx="6"/>
+  
+  <!-- CASA DEL section with golden border -->
+  <rect x="6" y="18" width="26" height="28" fill="none" stroke="#d4af37" stroke-width="2.5" rx="3"/>
+  <text x="19" y="36" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">CD</text>
+  
+  <!-- GUSTO section with golden background -->
+  <rect x="32" y="18" width="26" height="28" fill="#d4af37" rx="3"/>
+  <text x="45" y="38" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">G</text>
+</svg>
