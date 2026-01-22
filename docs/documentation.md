@@ -39,6 +39,8 @@ Restaurant Theme is a modern, elegant, and fully responsive template suitable fo
 - 🎨 **Tailwind CSS 3.4.19**
 - ⚡ **Vite 7.2.4** (Fast build tool)
 
+**Live Demo:** [https://casa-del-gusto.onrender.com/](https://casa-del-gusto.onrender.com/)
+
 ### Key Features
 
 ✅ **11 Pages** - Complete website structure  
@@ -645,6 +647,39 @@ Then use Tailwind's `dark:` prefix in your components:
 ---
 
 ## 12. Deployment
+
+### Live Demo
+
+**Live Demo URL:** [https://casa-del-gusto.onrender.com/](https://casa-del-gusto.onrender.com/)
+
+### React Version
+
+**React Version:** 19.2.3 (as specified in `package.json`)
+
+### Render.com
+
+1. **Create Static Site:**
+   - Go to [render.com](https://render.com)
+   - Click "New +" → "Static Site"
+   - Connect your GitHub repository
+
+2. **Configure Build Settings:**
+   - **Build Command:** `npm install && npm run build`
+   - **Publish Directory:** `dist`
+   - **Branch:** `main` (or your default branch)
+
+3. **Configure Routing (IMPORTANT):**
+   - Go to Settings → Redirects & Rewrites
+   - Add rewrite rule:
+     - **Source:** `/*`
+     - **Destination:** `/index.html`
+     - **Type:** `Rewrite`
+
+4. **Deploy:**
+   - Click "Create Static Site"
+   - Wait for deployment (3-5 minutes)
+
+**Note:** See `render.yaml` file in root for automatic configuration.
 
 ### Netlify
 

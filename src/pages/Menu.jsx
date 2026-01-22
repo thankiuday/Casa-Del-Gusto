@@ -25,29 +25,81 @@ const Menu = () => {
       />
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
-        <div className="absolute inset-0 z-0 w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
-          <img
+        <motion.div 
+          className="absolute inset-0 z-0 w-full" 
+          style={{ maxWidth: '100vw', overflowX: 'hidden' }}
+          animate={{
+            scale: [1, 1.08, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <motion.img
             src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&h=1080&fit=crop"
             alt="Menu"
             className="w-full h-full object-cover"
             style={{ maxWidth: '100%', width: '100%' }}
+            animate={{
+              filter: ['brightness(0.4)', 'brightness(0.5)', 'brightness(0.4)'],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           />
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70"
+            animate={{
+              background: [
+                'linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
+                'linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.7), rgba(0,0,0,0.6))',
+                'linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
+              ],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </motion.div>
         <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw' }}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30, rotateX: -15 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="w-full"
             style={{ maxWidth: '100%', overflowX: 'hidden', paddingLeft: '0.5rem', paddingRight: '0.5rem' }}
           >
-            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words" style={{ wordBreak: 'break-word' }}>
+            <motion.p 
+              className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words" 
+              style={{ wordBreak: 'break-word' }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Our Menu
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words" style={{ wordBreak: 'break-word', maxWidth: '100%' }}>
-              Discover Our Dishes
-            </h1>
+            </motion.p>
+            <motion.h1 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words" 
+              style={{ wordBreak: 'break-word', maxWidth: '100%' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="inline-block"
+              >
+                Discover Our Dishes
+              </motion.span>
+            </motion.h1>
           </motion.div>
         </Container>
       </section>

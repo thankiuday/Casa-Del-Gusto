@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Phone } from 'lucide-react';
 import { Container, Button } from '../ui';
@@ -23,52 +23,190 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
     cta2: cta2 || defaultProps.cta2,
   };
 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   if (variant === 'fullscreen') {
     return (
       <section className="relative h-screen flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
-          <img
+        {/* Animated Background Image with Parallax */}
+        <motion.div 
+          className="absolute inset-0 z-0 w-full" 
+          style={{ maxWidth: '100vw', overflowX: 'hidden' }}
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <motion.img
             src={props.image}
             alt="Restaurant"
             className="w-full h-full object-cover"
             style={{ maxWidth: '100%', width: '100%' }}
+            animate={{
+              x: mousePosition.x,
+              y: mousePosition.y,
+            }}
+            transition={{ type: "spring", stiffness: 50, damping: 20 }}
           />
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
+          {/* Animated Gradient Overlay */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
+            animate={{
+              background: [
+                'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
+                'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7), rgba(0,0,0,0.6))',
+                'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.7))',
+              ],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          {/* Floating Particles Effect */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-primary-400 rounded-full opacity-30"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${30 + i * 10}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                x: [0, Math.sin(i) * 20, 0],
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.3,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </motion.div>
 
-        {/* Content */}
+        {/* Content with Staggered Animations */}
         <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)' }}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
             className="w-full"
             style={{ maxWidth: '100%', overflowX: 'hidden' }}
           >
-            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words" style={{ wordBreak: 'break-word' }}>
+            {/* Subtitle with Slide and Fade */}
+            <motion.p 
+              className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words" 
+              style={{ wordBreak: 'break-word' }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               {props.subtitle}
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-6 break-words" style={{ wordBreak: 'break-word', maxWidth: '100%' }}>
-              {props.title}
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8 break-words" style={{ wordBreak: 'break-word', maxWidth: '100%' }}>
+            </motion.p>
+            
+            {/* Title with Character Animation */}
+            <motion.h1 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-6 break-words" 
+              style={{ wordBreak: 'break-word', maxWidth: '100%' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="inline-block"
+              >
+                {props.title.split(' ').map((word, i) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block mr-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                    whileHover={{ scale: 1.05, color: '#d4af37' }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </motion.span>
+            </motion.h1>
+            
+            {/* Description with Fade */}
+            <motion.p 
+              className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8 break-words" 
+              style={{ wordBreak: 'break-word', maxWidth: '100%' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
               {props.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to={props.cta1.link}>
-                <Button size="lg">
-                  {props.cta1.text}
-                  <ArrowRight className="ml-2" size={20} />
-                </Button>
-              </Link>
-              <Link to={props.cta2.link}>
-                <Button variant="outline" size="lg">
-                  <Phone className="mr-2" size={20} />
-                  {props.cta2.text}
-                </Button>
-              </Link>
-            </div>
+            </motion.p>
+            
+            {/* Buttons with Stagger */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link to={props.cta1.link}>
+                  <Button size="lg" className="relative overflow-hidden group">
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                      initial={{ x: '-100%' }}
+                      whileHover={{ x: '100%' }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <span className="relative z-10 flex items-center">
+                      {props.cta1.text}
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ArrowRight className="ml-2" size={20} />
+                      </motion.span>
+                    </span>
+                  </Button>
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link to={props.cta2.link}>
+                  <Button variant="outline" size="lg" className="border-2 border-white/30 hover:border-primary-400">
+                    <Phone className="mr-2" size={20} />
+                    {props.cta2.text}
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </Container>
       </section>
