@@ -120,7 +120,8 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
               }}
             />
           ))}
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Content with Staggered Animations */}
         <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw', width: '100%', paddingLeft: 'clamp(0.75rem, 4vw, 2rem)', paddingRight: 'clamp(0.75rem, 4vw, 2rem)', boxSizing: 'border-box' }}>
