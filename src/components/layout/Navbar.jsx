@@ -50,24 +50,27 @@ const Navbar = () => {
           : 'bg-transparent'
         }
       `}
+      style={{ maxWidth: '100vw', overflowX: 'hidden' }}
     >
       <Container>
-        <div className="flex items-center justify-between py-4">
-          <Logo 
-            showTagline={false}
-            size="default"
-            variant={isScrolled ? 'auto' : 'auto'}
-            className={isScrolled ? '' : 'drop-shadow-lg'}
-          />
+        <div className="flex items-center justify-between py-3 sm:py-4 gap-2 sm:gap-4 min-w-0">
+          <div className="flex-shrink-0 min-w-0 max-w-[calc(100%-120px)] sm:max-w-none">
+            <Logo 
+              showTagline={false}
+              size="default"
+              variant={isScrolled ? 'auto' : 'auto'}
+              className={`${isScrolled ? '' : 'drop-shadow-lg'} max-w-full`}
+            />
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`
-                  px-4 py-2 rounded-lg font-medium transition-all duration-300
+                  px-3 xl:px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm xl:text-base whitespace-nowrap
                   ${isActive(link.path)
                     ? 'text-primary-500'
                     : isScrolled
@@ -82,10 +85,10 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-4 flex-shrink-0">
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`p-2 rounded-lg transition-colors flex-shrink-0 ${
                 isScrolled
                   ? 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'
                   : 'hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white drop-shadow-lg'
@@ -94,37 +97,38 @@ const Navbar = () => {
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <Link to="/reservations">
-              <Button size="sm">
-                <Phone size={16} className="mr-2" />
-                Book a Table
+            <Link to="/reservations" className="flex-shrink-0">
+              <Button size="sm" className="text-xs xl:text-sm">
+                <Phone size={14} className="xl:w-4 xl:h-4 mr-1.5 xl:mr-2" />
+                <span className="hidden xl:inline">Book a Table</span>
+                <span className="xl:hidden">Book</span>
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-2 lg:hidden">
+          <div className="flex items-center space-x-1 sm:space-x-2 lg:hidden flex-shrink-0">
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg ${
+              className={`p-1.5 sm:p-2 rounded-lg flex-shrink-0 ${
                 isScrolled
                   ? 'text-gray-700 dark:text-gray-300'
                   : 'text-gray-900 dark:text-white drop-shadow-lg'
               }`}
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === 'dark' ? <Sun size={18} className="sm:w-5 sm:h-5" /> : <Moon size={18} className="sm:w-5 sm:h-5" />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg ${
+              className={`p-1.5 sm:p-2 rounded-lg flex-shrink-0 ${
                 isScrolled
                   ? 'text-gray-700 dark:text-gray-300'
                   : 'text-gray-900 dark:text-white drop-shadow-lg'
               }`}
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
@@ -141,13 +145,13 @@ const Navbar = () => {
             className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"
           >
             <Container>
-              <div className="py-4 space-y-2">
+              <div className="py-3 sm:py-4 space-y-1 sm:space-y-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     className={`
-                      block px-4 py-3 rounded-lg font-medium transition-colors
+                      block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg font-medium transition-colors text-sm sm:text-base
                       ${isActive(link.path)
                         ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-500'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -157,10 +161,10 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
-                <div className="pt-2">
+                <div className="pt-2 sm:pt-3">
                   <Link to="/reservations">
-                    <Button fullWidth>
-                      <Phone size={16} className="mr-2" />
+                    <Button fullWidth className="text-sm sm:text-base">
+                      <Phone size={14} className="sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
                       Book a Table
                     </Button>
                   </Link>

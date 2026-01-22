@@ -18,10 +18,10 @@ const Logo = ({
       padding: 'px-2 py-1'
     },
     default: {
-      main: 'text-lg md:text-xl',
-      tagline: 'text-[10px] md:text-xs',
-      container: 'space-y-1',
-      padding: 'px-3 py-1.5'
+      main: 'text-sm sm:text-base md:text-lg lg:text-xl',
+      tagline: 'text-[8px] sm:text-[10px] md:text-xs',
+      container: 'space-y-0.5 sm:space-y-1',
+      padding: 'px-2 sm:px-3 py-1 sm:py-1.5'
     },
     large: {
       main: 'text-2xl md:text-3xl',
@@ -58,13 +58,13 @@ const Logo = ({
   };
 
   return (
-    <Link to="/" className={`inline-flex flex-col items-center transition-opacity hover:opacity-90 ${className}`}>
-      <div className={`flex flex-col items-center ${classes.container} ${getBackgroundClass()} px-3 py-1.5 rounded-lg transition-all duration-300`}>
+    <Link to="/" className={`inline-flex flex-col items-center transition-opacity hover:opacity-90 flex-shrink-0 ${className}`}>
+      <div className={`flex flex-col items-center ${classes.container} ${getBackgroundClass()} px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all duration-300`}>
         {/* Main Logo Text */}
         <div className="flex items-center">
           {/* CASA DEL - Text with golden outline */}
           <div className="relative">
-            <span className={`${classes.main} font-bold ${getTextColor()} uppercase tracking-tight px-2 py-0.5`}>
+            <span className={`${classes.main} font-bold ${getTextColor()} uppercase tracking-tight px-1 sm:px-2 py-0.5 whitespace-nowrap`}>
               CASA DEL
             </span>
             <div 
@@ -80,7 +80,7 @@ const Logo = ({
           </div>
           
           {/* GUSTO - Text on solid golden background */}
-          <div className="bg-primary-400 dark:bg-primary-500 px-2 py-0.5" 
+          <div className="bg-primary-400 dark:bg-primary-500 px-1 sm:px-2 py-0.5" 
                style={{ 
                  borderTopLeftRadius: '0',
                  borderBottomLeftRadius: '0',
@@ -88,7 +88,7 @@ const Logo = ({
                  borderBottomRightRadius: '6px'
                }}
           >
-            <span className={`${classes.main} font-bold text-white uppercase tracking-tight`}>
+            <span className={`${classes.main} font-bold text-white uppercase tracking-tight whitespace-nowrap`}>
               GUSTO
             </span>
           </div>
