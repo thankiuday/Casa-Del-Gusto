@@ -37,26 +37,28 @@ const Gallery = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full max-w-full">
-        <div className="absolute inset-0 z-0 w-full">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
+        <div className="absolute inset-0 z-0 w-full" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
           <img
             src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop"
             alt="Gallery"
             className="w-full h-full object-cover"
+            style={{ maxWidth: '100%', width: '100%' }}
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
-        <Container className="relative z-10 text-center text-white w-full max-w-full">
+        <Container className="relative z-10 text-center text-white w-full" style={{ maxWidth: '100vw' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-full px-2"
+            className="w-full"
+            style={{ maxWidth: '100%', overflowX: 'hidden', paddingLeft: '0.5rem', paddingRight: '0.5rem' }}
           >
-            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words">
+            <p className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4 break-words" style={{ wordBreak: 'break-word' }}>
               Gallery
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold break-words" style={{ wordBreak: 'break-word', maxWidth: '100%' }}>
               Our Visual Story
             </h1>
           </motion.div>

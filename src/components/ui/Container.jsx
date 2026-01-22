@@ -13,10 +13,13 @@ const Container = ({ children, className = '', noPadding = false }) => {
       style={{ 
         maxWidth: '100%', 
         overflowX: 'hidden',
-        width: '100%'
+        width: '100%',
+        boxSizing: 'border-box'
       }}
     >
-      {children}
+      <div style={{ maxWidth: '100%', overflowX: 'hidden', width: '100%' }}>
+        {children}
+      </div>
     </div>
   );
 };
