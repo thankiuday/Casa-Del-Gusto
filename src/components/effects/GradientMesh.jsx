@@ -9,7 +9,7 @@ const GradientMesh = ({
   return (
     <div 
       className="absolute inset-0 overflow-hidden"
-      style={{ maxWidth: '100vw', width: '100%', zIndex: 0 }}
+      style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0, zIndex: 0 }}
     >
       <motion.div
         className="absolute inset-0"
@@ -20,6 +20,9 @@ const GradientMesh = ({
             radial-gradient(circle at 50% 50%, ${colors[2]}${Math.floor(intensity * 255).toString(16)}, transparent 70%)
           `,
           mixBlendMode: 'overlay',
+          maxWidth: '100vw',
+          width: '100%',
+          height: '100%',
         }}
         animate={animate ? {
           background: [

@@ -40,7 +40,10 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
   // Cinematic variant - Split screen with 3D depth
   if (variant === 'cinematic') {
     return (
-      <section className="relative h-screen flex items-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', width: '100vw', left: 0, right: 0, margin: 0, padding: 0 }}>
+      <section 
+        className="relative h-screen flex items-center overflow-hidden w-full [&_*]:hover:scale-100 [&_*]:hover:bg-[inherit] [&_*]:hover:text-[inherit] [&_*]:hover:border-[inherit]" 
+        style={{ maxWidth: '100vw', overflowX: 'hidden', width: '100vw', left: 0, right: 0, margin: 0, padding: 0 }}
+      >
         <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%' }}>
           <motion.img
             src={props.image}
@@ -51,12 +54,39 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
               scale: [1, 1.05, 1],
             }}
             transition={{
-              duration: 15,
+              scale: {
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut"
+              },
+              x: {
+                type: "spring",
+                stiffness: 50,
+                damping: 20
+              },
+              y: {
+                type: "spring",
+                stiffness: 50,
+                damping: 20
+              }
+            }}
+          />
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"
+            animate={{
+              background: [
+                'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6), transparent)',
+                'linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.65), transparent)',
+                'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6), transparent)',
+              ],
+            }}
+            transition={{
+              duration: 10,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+          <ParticleSystem count={15} mobileCount={8} color="#d4af37" />
           <GeometricShapes count={8} color="#d4af37" opacity={0.15} />
         </div>
 
@@ -64,18 +94,37 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: 'min(100vw, 1280px)', width: '100%' }}>
             {/* Left: Image with 3D effect */}
             <motion.div
-              className="hidden lg:block relative h-[400px] lg:h-[500px]"
-              initial={{ opacity: 0, x: -100, rotateY: -15 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              className="hidden lg:block relative h-[400px] lg:h-[500px] overflow-hidden rounded-2xl"
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              whileHover={{ rotateY: 5, scale: 1.02 }}
-              style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
+              style={{ maxWidth: '100%', overflowX: 'hidden' }}
             >
               <motion.img
                 src={props.image}
                 alt="Restaurant"
                 className="w-full h-full object-cover rounded-2xl shadow-2xl"
-                style={{ transform: 'translateZ(50px)' }}
+                style={{ maxWidth: '100%', width: '100%', height: '100%', objectFit: 'cover' }}
+                animate={{
+                  scale: [1, 1.03, 1],
+                }}
+                transition={{
+                  scale: {
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  },
+                  x: {
+                    type: "spring",
+                    stiffness: 50,
+                    damping: 20
+                  },
+                  y: {
+                    type: "spring",
+                    stiffness: 50,
+                    damping: 20
+                  }
+                }}
               />
             </motion.div>
 
@@ -112,24 +161,60 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
                 transition={{ duration: 0.8, delay: 1.2 }}
               >
                 <Link to={props.cta1.link}>
-                  <Button size="lg" className="group relative overflow-hidden">
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-600"
-                      initial={{ x: '-100%' }}
-                      whileHover={{ x: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <span className="relative z-10 flex items-center">
+                  <motion.button
+                    className="px-8 py-4 text-lg bg-primary-400 text-white rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    whileHover={{}}
+                    whileTap={{}}
+                    style={{ 
+                      cursor: 'pointer', 
+                      transform: 'none !important',
+                      transition: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'none';
+                      e.currentTarget.style.backgroundColor = '#d4af37';
+                      e.currentTarget.style.scale = '1';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'none';
+                      e.currentTarget.style.backgroundColor = '#d4af37';
+                      e.currentTarget.style.scale = '1';
+                    }}
+                  >
+                    <span className="flex items-center">
                       {props.cta1.text}
-                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                      <ArrowRight className="ml-2" size={20} />
                     </span>
-                  </Button>
+                  </motion.button>
                 </Link>
                 <Link to={props.cta2.link}>
-                  <Button variant="outline" size="lg" className="border-2 border-white/30 hover:border-primary-400">
-                    <Phone className="mr-2" size={20} />
+                  <motion.button
+                    className="px-8 py-4 text-lg border-2 border-white/30 text-white rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    whileHover={{}}
+                    whileTap={{}}
+                    style={{ 
+                      cursor: 'pointer', 
+                      transform: 'none !important',
+                      transition: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'none';
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = 'white';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                      e.currentTarget.style.scale = '1';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'none';
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = 'white';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                      e.currentTarget.style.scale = '1';
+                    }}
+                  >
+                    <Phone className="mr-2 inline" size={20} />
                     {props.cta2.text}
-                  </Button>
+                  </motion.button>
                 </Link>
               </motion.div>
             </motion.div>
@@ -205,41 +290,79 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
   // Grid Morph variant
   if (variant === 'grid-morph') {
     return (
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full" style={{ maxWidth: '100vw', overflowX: 'hidden', width: '100vw', left: 0, right: 0, margin: 0, padding: 0 }}>
-        <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%' }}>
+      <section 
+        className="relative h-[50vh] flex items-center justify-center overflow-hidden w-full" 
+        style={{ 
+          maxWidth: '100vw', 
+          overflowX: 'hidden', 
+          overflowY: 'hidden', 
+          width: '100vw', 
+          left: 0, 
+          right: 0, 
+          margin: 0, 
+          padding: 0, 
+          position: 'relative', 
+          boxSizing: 'border-box',
+          clipPath: 'inset(0)',
+          contain: 'layout style paint',
+        }}
+      >
+        <div className="absolute inset-0 z-0 overflow-hidden" style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0, boxSizing: 'border-box', clipPath: 'inset(0)' }}>
           <motion.img
             src={props.image}
             alt="Background"
             className="w-full h-full object-cover"
-            style={{ maxWidth: '100%', width: '100%', height: '100%' }}
+            style={{ maxWidth: '100%', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
-          <div className="absolute inset-0 bg-black/60" />
-          <GradientMesh colors={['#d4af37', '#334155', '#1e293b']} intensity={0.4} />
-          <GeometricShapes count={12} color="#d4af37" opacity={0.2} />
+          <div className="absolute inset-0 bg-black/60" style={{ maxWidth: '100vw', width: '100%', left: 0, right: 0, top: 0, bottom: 0 }} />
+          <div style={{ maxWidth: '100vw', width: '100%', overflowX: 'hidden', overflowY: 'hidden', position: 'absolute', inset: 0, left: 0, right: 0, top: 0, bottom: 0, zIndex: 1 }}>
+            <GradientMesh colors={['#d4af37', '#334155', '#1e293b']} intensity={0.4} />
+          </div>
+          {/* GeometricShapes temporarily disabled to prevent scrollbar */}
+          {/* <div style={{ 
+            maxWidth: '100vw', 
+            width: '100%', 
+            overflowX: 'hidden', 
+            overflowY: 'hidden', 
+            position: 'absolute', 
+            inset: 0, 
+            left: 0, 
+            right: 0, 
+            top: 0, 
+            bottom: 0, 
+            zIndex: 1,
+            clipPath: 'inset(0)',
+            contain: 'layout style paint',
+          }}>
+            <GeometricShapes count={6} color="#d4af37" opacity={0.12} />
+          </div> */}
         </div>
 
-        <div className="relative z-10 text-center text-white w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: 'min(100vw, 1280px)', width: '100%' }}>
+        <div className="relative z-10 text-center text-white w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: 'min(100vw, 1280px)', width: '100%', boxSizing: 'border-box', overflowX: 'hidden', overflowY: 'hidden', position: 'relative' }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
+            style={{ maxWidth: '100%', overflowX: 'hidden', overflowY: 'hidden', width: '100%', boxSizing: 'border-box' }}
           >
             <motion.p
               className="text-primary-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              style={{ maxWidth: '100%', overflowX: 'hidden', wordBreak: 'break-word', boxSizing: 'border-box' }}
             >
               {props.subtitle}
             </motion.p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-              <TextReveal text={props.title} variant="character" delay={0.4} stagger={0.05} />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6" style={{ maxWidth: '100%', overflowX: 'hidden', overflowY: 'hidden', wordBreak: 'break-word', boxSizing: 'border-box', width: '100%', contain: 'layout style paint' }}>
+              <TextReveal text={props.title} variant="word" delay={0.4} stagger={0.1} />
             </h1>
             <motion.p
               className="text-base sm:text-lg text-gray-200 mb-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1 }}
+              style={{ maxWidth: '100%', overflowX: 'hidden', wordBreak: 'break-word', boxSizing: 'border-box' }}
             >
               {props.description}
             </motion.p>
@@ -248,12 +371,13 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
+              style={{ maxWidth: '100%', overflowX: 'hidden', boxSizing: 'border-box', width: '100%' }}
             >
-              <Link to={props.cta1.link}>
-                <Button size="lg">{props.cta1.text} <ArrowRight className="ml-2 inline" size={20} /></Button>
+              <Link to={props.cta1.link} style={{ maxWidth: '100%', overflowX: 'hidden', display: 'inline-block' }}>
+                <Button size="lg" style={{ maxWidth: '100%', overflowX: 'hidden', boxSizing: 'border-box' }}>{props.cta1.text} <ArrowRight className="ml-2 inline" size={20} /></Button>
               </Link>
-              <Link to={props.cta2.link}>
-                <Button variant="outline" size="lg"><Phone className="mr-2 inline" size={20} /> {props.cta2.text}</Button>
+              <Link to={props.cta2.link} style={{ maxWidth: '100%', overflowX: 'hidden', display: 'inline-block' }}>
+                <Button variant="outline" size="lg" style={{ maxWidth: '100%', overflowX: 'hidden', boxSizing: 'border-box' }}><Phone className="mr-2 inline" size={20} /> {props.cta2.text}</Button>
               </Link>
             </motion.div>
           </motion.div>
@@ -807,8 +931,8 @@ const Hero = ({ variant = 'fullscreen', title, subtitle, description, image, cta
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-elegant-lg"
-              whileHover={{ scale: 1.02, rotateY: 5 }}
-              style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
+              whileHover={{ scale: 1.02 }}
+              style={{ maxWidth: '100%', overflowX: 'hidden' }}
             >
               <img
                 src={props.image}

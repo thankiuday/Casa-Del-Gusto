@@ -14,15 +14,34 @@ const TextReveal = ({
 
   if (variant === 'character') {
     return (
-      <motion.span className={className} style={{ display: 'inline-block', maxWidth: '100%' }}>
+      <motion.span 
+        className={className} 
+        style={{ 
+          display: 'inline-block', 
+          maxWidth: '100%', 
+          overflowX: 'hidden', 
+          overflowY: 'hidden',
+          wordBreak: 'break-word', 
+          boxSizing: 'border-box', 
+          width: '100%',
+          contain: 'layout style paint',
+        }}
+      >
         {characters.map((char, i) => (
           <motion.span
             key={i}
-            style={{ display: 'inline-block', maxWidth: '100%' }}
-            initial={{ opacity: 0, y: 20, rotateX: -90 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            style={{ 
+              display: 'inline', 
+              maxWidth: '100%', 
+              overflowX: 'hidden', 
+              overflowY: 'hidden',
+              boxSizing: 'border-box',
+              verticalAlign: 'baseline',
+            }}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.5,
+              duration: 0.4,
               delay: delay + i * stagger,
               ease: "easeOut",
             }}

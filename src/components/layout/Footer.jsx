@@ -127,7 +127,7 @@ const Footer = () => {
               © {currentYear} CASA DEL GUSTO. All rights reserved.
             </p>
             <p className="text-sm text-gray-400">
-              Designed with ❤️ for ThemeForest
+              Design and developed by Go Wind - Powering Your Digital Growth.
             </p>
           </div>
         </Container>

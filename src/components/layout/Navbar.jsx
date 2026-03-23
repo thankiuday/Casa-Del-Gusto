@@ -172,19 +172,19 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
-                <div className="pt-2 sm:pt-3 space-y-2">
+                <div className="pt-2 sm:pt-3 space-y-3 sm:space-y-4">
                   <a 
                     href="https://themeforest.net/item/your-item-name/12345678" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="block"
+                    className="block w-full"
                   >
-                    <Button fullWidth className="text-sm sm:text-base bg-green-600 hover:bg-green-700 text-white border-0">
+                    <Button fullWidth className="text-sm sm:text-base bg-green-600 hover:bg-green-700 text-white border-0 w-full">
                       Buy Now
                     </Button>
                   </a>
-                  <Link to="/reservations">
-                    <Button fullWidth className="text-sm sm:text-base">
+                  <Link to="/reservations" className="block w-full">
+                    <Button fullWidth className="text-sm sm:text-base w-full">
                       <Phone size={14} className="sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
                       Book a Table
                     </Button>
